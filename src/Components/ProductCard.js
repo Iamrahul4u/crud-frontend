@@ -5,7 +5,9 @@ const ProductCard = ({ product }) => {
   async function handleDelete(id) {
     try {
       if (window.confirm("Are you sure you want to delete this product?")) {
-        await axios.delete(`${process.env.BACKEND_PORT}/api/products/${id}`);
+        await axios.delete(
+          `https://crud-backend-9io2.onrender.com/api/products/${id}`
+        );
         alert("Product deleted successfully!");
       }
     } catch (error) {
