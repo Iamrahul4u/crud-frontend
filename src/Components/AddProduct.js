@@ -18,10 +18,13 @@ const AddProduct = ({ handleAddProduct }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      product["imgUrl"] = image;
+      const formData = new FormData();
+      formData.append("name", product.name);
+      formData.append("price", product.price);
+      formData.append("imgUrl", image);
       const response = await axios.post(
         `${process.env.BACKEND_PORT}/api/products`,
-        product,
+        formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
