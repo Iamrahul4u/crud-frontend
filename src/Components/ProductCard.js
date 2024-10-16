@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
       {product.imgUrl && (
         <img
           className="w-full h-48 object-cover"
-          src={`${process.env.BACKEND_PORT}/${product.imgUrl}`}
+          src={`https://crud-backend-9io2.onrender.com${product.imgUrl}`}
           alt={product.name}
         />
       )}

@@ -23,7 +23,7 @@ const AddProduct = ({ handleAddProduct }) => {
       formData.append("price", product.price);
       formData.append("imgUrl", image);
       const response = await axios.post(
-        `${process.env.BACKEND_PORT}/api/products`,
+        `https://crud-backend-9io2.onrender.com/api/products`,
         formData,
         {
           headers: {
