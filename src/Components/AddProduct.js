@@ -19,11 +19,15 @@ const AddProduct = ({ handleAddProduct }) => {
     e.preventDefault();
     try {
       product["imgUrl"] = image;
-      await axios.post("http://localhost:3000/api/products", product, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        `${process.env.BACKEND_PORT}/api/products`,
+        product,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       alert("Product added successfully!");
       setProduct({ name: "", price: "" });
       handleAddProduct();
