@@ -5,7 +5,7 @@ const ProductCard = ({ product }) => {
   async function handleDelete(id) {
     try {
       if (window.confirm("Are you sure you want to delete this product?")) {
-        await axios.delete(`http://localhost:3000/api/products/${id}`);
+        await axios.delete(`${process.env.BACKEND_PORT}/api/products/${id}`);
         alert("Product deleted successfully!");
       }
     } catch (error) {
