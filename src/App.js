@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import ProductsPage from "./Components/ProductPage";
+import AddProduct from "./Components/AddProduct";
+import { fetchProducts } from "./utils";
 
 function App() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [addedProduct, setAddedProduct] = useState(false);
+  useEffect(() => {
+    async function fetchProductsfun() {
+      const response = await fetchProducts();
+      setProducts(response.data);
+    }
+    fetchProductsfun();
+    setAddedProduct(false);
+  }, [addedProduct]);
+  function handleAddProduct() {
+    setAddedProduct(true);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AddProduct handleAddProduct={handleAddProduct} />
+      <ProductsPage products={products} />
     </div>
   );
 }
