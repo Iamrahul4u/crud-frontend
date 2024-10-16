@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
       {product.imgUrl && (
         <img
           className="w-full h-48 object-cover"
-          src={`http://localhost:3000${product.imgUrl}`}
+          src={`${process.env.BACKEND_PORT}/uploads/${product.imgUrl}`}
           alt={product.name}
         />
       )}
